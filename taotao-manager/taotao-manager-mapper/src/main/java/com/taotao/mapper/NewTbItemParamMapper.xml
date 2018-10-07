@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.taotao.mapper.NewTbItemParamMapper">
+    <resultMap id="NewResultMap" type="com.taotao.model.NweTbItemParam">
+        <result column="id" property="id"/>
+        <result column="item_cat_id" property="itemCatId"/>
+        <result column="param_data" property="paramData"/>
+        <result column="created" property="created"/>
+        <result column="updated" property="updated"/>
+        <result column="name" property="itemCatName"/>
+    </resultMap>
+    <select id="selectNweTbItemParam" resultMap="NewResultMap">
+        SELECT tip.id,
+                tip.item_cat_id,
+                tip.param_data,
+                tip.created,
+                tip.updated,
+                tic.name
+                FROM tb_item_param tip LEFT JOIN tb_item_cat tic ON tip.item_cat_id=tic.id
+    </select>
+</mapper>
